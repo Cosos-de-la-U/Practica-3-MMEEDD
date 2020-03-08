@@ -4,26 +4,25 @@
  * and open the template in the editor.
  */
 package Clases;
-
-import java.time.Instant;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
-
 /**
  *
  * @author raul-pc
  */
-public class Mantenimientos {
+public class Mantos {
     private String tipoManto;
     private double precioManto;
-    private String fechaManto;
+    private Date fechaManto;
 
-    public Mantenimientos() {
+    public Mantos() {
     }
 
-    public Mantenimientos(String tipoManto, double precioManto, String fechaManto) {
+    public Mantos(String tipoManto, double precioManto, Date fechaManto) {
         this.tipoManto = tipoManto;
         this.precioManto = precioManto;
         this.fechaManto = fechaManto;
@@ -72,13 +71,14 @@ public class Mantenimientos {
         this.precioManto = 50 + rnd.nextInt(150);
     }
 
-    public String getFechaManto() {
+    public Date getFechaManto() {
         return fechaManto;
     }
 
     public void setFechaManto() {
         //MODIFICAR A SIMPLE EN VEZ DE GREGORIANOS
         GregorianCalendar gc = new GregorianCalendar();
+        LocalDate lc = LocalDate.now();
         Random rnd = new Random();
         //Partiendo desde al año y se añade el extra random que se quiere
         int año = 2010 + rnd.nextInt(11);
@@ -88,9 +88,7 @@ public class Mantenimientos {
         int dia = rnd.nextInt(gc.getActualMaximum(gc.DAY_OF_MONTH));
         gc.set(gc.DATE, dia);
         //Se imprime la fecha de uno en uno porque no se como imprimerlo de un solo
-        //System.out.println(gc.get(gc.DATE) + "/" + (gc.get(gc.MONTH)+1) + "/"+gc.get(gc.YEAR));
-        this.fechaManto = gc.get(gc.DATE) + "/" + (gc.get(gc.MONTH)+1) + "/"+gc.get(gc.YEAR);
-        
+        this.fechaManto = gc.getTime();
     }
     
     

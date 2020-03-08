@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package Clases;
+
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Random;
+
 /**
  *
  * @author raul-pc
@@ -15,14 +17,18 @@ public class Carros {
 
     private String placa;
     private String modelo;
-    private String año;
+    private int año;
     private String color;
-    private ArrayList<Mantenimientos> lMantenimientos;
-    
+    private ArrayList<Mantos> lMantenimientos;
+
+    public static void main(String[] args) {
+
+    }
+
     public Carros() {
     }
-    
-    public Carros(String placa, String modelo, String año, String color, ArrayList<Mantenimientos> lMantenimientos) {
+
+    public Carros(String placa, String modelo, int año, String color, ArrayList<Mantos> lMantenimientos) {
         this.placa = placa;
         this.modelo = modelo;
         this.año = año;
@@ -34,11 +40,11 @@ public class Carros {
     public String getPlaca() {
         return placa;
     }
-    
+
     public void setPlaca() {
         Random rnd = new Random();
         int parteUno = 0;
-        do {            
+        do {
             parteUno = rnd.nextInt(999);
         } while (parteUno < 100);
         this.placa = "P" + Integer.toString(rnd.nextInt(1000)) + "-" + Integer.toString(parteUno);
@@ -48,7 +54,7 @@ public class Carros {
     public String getModelo() {
         return modelo;
     }
-    
+
     public void setModelo() {
         //LISTA DE MODELOS
         ArrayList<Object> lModelos = new ArrayList<>();
@@ -79,22 +85,21 @@ public class Carros {
     }
 
     //AÑOS hecho modificar en futuro
-    public String getAño() {
+    public int getAño() {
         return año;
     }
-    
+
     public void setAño() {
         Random rnd = new Random();
         GregorianCalendar grego = new GregorianCalendar();
         grego.set(grego.YEAR, 1990 + rnd.nextInt(31));
-        this.año = Integer.toString(grego.get(grego.YEAR));
+        this.año = grego.get(grego.YEAR);
     }
 
-    //COLOR hecho
     public String getColor() {
         return color;
     }
-    
+
     public void setColor() {
         //Lista de colores
         ArrayList<Object> lColor = new ArrayList<>();
@@ -120,13 +125,14 @@ public class Carros {
         Random rnd = new Random();
         this.color = lColor.get(rnd.nextInt(lColor.size())).toString();
     }
+
     //MANTENIMIENTOS, WORKING ON THAT
-    public ArrayList<Mantenimientos> getlMantenimientos() {
+    public ArrayList<Mantos> getlMantenimientos() {
         return lMantenimientos;
     }
-    
-    public void setlMantenimientos() {
-        this.lMantenimientos = lMantenimientos;
+
+    public void setlMantenimientos(ArrayList<Mantos> lManto) {
+        this.lMantenimientos = lManto;
     }
-    
+
 }
